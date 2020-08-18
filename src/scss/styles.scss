@@ -1,0 +1,42 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+html {
+    @apply bg-gray-900;
+}
+
+.preloader {
+    @apply transition-opacity duration-500 delay-500;
+
+    svg {
+        opacity: 0;
+        transition: opacity .4s 900ms cubic-bezier(.445,.05,.55,.95);
+
+        .path {
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s cubic-bezier(.645, .045, .355, 1);
+        }
+    }
+
+    &.visible:not(.done) {
+        svg {
+            opacity: 1;
+            transition-delay: 0ms;
+
+            .path {
+                stroke-dashoffset: 320px;
+            }
+        }
+    }
+
+    &.done {
+        opacity: 0;
+    }
+}
+
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 20 12'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234b5563' fill-opacity='0.05'%3E%3Cpath d='M9.8 12L0 2.2V.8l10 10 10-10v1.4L10.2 12h-.4zm-4 0L0 6.2V4.8L7.2 12H5.8zm8.4 0L20 6.2V4.8L12.8 12h1.4zM9.8 0l.2.2.2-.2h-.4zm-4 0L10 4.2 14.2 0h-1.4L10 2.8 7.2 0H5.8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
